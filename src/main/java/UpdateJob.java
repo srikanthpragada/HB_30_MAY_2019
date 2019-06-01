@@ -4,7 +4,7 @@ import org.hibernate.cfg.Configuration;
 
 import entities.Job;
 
-public class AddJob {
+public class UpdateJob {
 
 	public static void main(String[] args) throws Exception {
        
@@ -15,21 +15,21 @@ public class AddJob {
 		Session s = sf.openSession();
 		s.beginTransaction();
 		
-		Job j = new Job();
-		j.setId("HB_PROG");
-		j.setTitle("Hibernate Programmer");
-		j.setMinSal(10000);
-		j.setMaxSal(20000);
-		
-		// Object is j is Transient 
-		
-		s.save(j);
-		// Object is j is Persistent
+		Job job = (Job) s.get(Job.class,  "HB_PROG");
+		if (job == null)
+			System.out.println("Sorry! Job not found!");
+		else
+		{
+			job.setTitle("Hibernate 4 Programmer");
+		}
 		
 		s.getTransaction().commit();
 		s.close();
 		
-		// Object is j is Detached 
+		// Object is detached
+		job.setTitle("Hibernate 5.4 Programmer");
+		
+		
 		sf.close();
 	}
 }

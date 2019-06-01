@@ -12,5 +12,4 @@
         <property name="hibernate.show_sql">true</property>
         <mapping  resource="Job.hbm.xml"/>
     </session-factory>
-  
 </hibernate-configuration>

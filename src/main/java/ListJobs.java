@@ -16,7 +16,7 @@ public class ListJobs {
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
         
-		Query q = s.createQuery("from Jobs");
+		Query q = s.createQuery("from Job");
         System.out.println("About to execute query!");
         
 		for(Job j : (List<Job>) q.list()) {

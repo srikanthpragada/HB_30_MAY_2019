@@ -4,7 +4,7 @@ import org.hibernate.cfg.Configuration;
 
 import entities.Job;
 
-public class AddJob {
+public class DeleteJob {
 
 	public static void main(String[] args) throws Exception {
        
@@ -13,23 +13,21 @@ public class AddJob {
 		
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
+		
+		System.out.println("Flush Mode : " + s.getFlushMode());
+		
 		s.beginTransaction();
 		
-		Job j = new Job();
-		j.setId("HB_PROG");
-		j.setTitle("Hibernate Programmer");
-		j.setMinSal(10000);
-		j.setMaxSal(20000);
-		
-		// Object is j is Transient 
-		
-		s.save(j);
-		// Object is j is Persistent
+		Job job = (Job) s.get(Job.class,  "HB_PROG");
+		if (job == null)
+			System.out.println("Sorry! Job not found!");
+		else
+		{
+			s.delete(job);
+		}
 		
 		s.getTransaction().commit();
 		s.close();
-		
-		// Object is j is Detached 
 		sf.close();
 	}
 }
