@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-May-2019, 4:22:03 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="entities.Publisher" table="HB_PUBLISHERS">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="increment" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" length="20" />
+		</property>
+
+		<component class="entities.Address" name="address">
+			<property name="line1" length="30" />
+			<property name="line2" length="30" />
+			<property name="city"  length="30"/>
+		</component>
+	</class>
+</hibernate-mapping>
