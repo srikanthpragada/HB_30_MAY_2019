@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-May-2019, 4:22:03 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="inh.Programmer" table="HB_PROGRAMMERS">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="increment" />
+		</id>
+		
+		<discriminator column="PTYPE" length="1" type="string"/>
+		
+		<property name="name" type="java.lang.String">
+			<column name="name" length="20" />
+		</property>
+		
+		
+		
+		<subclass discriminator-value="j" name="inh.JavaProgrammer">
+ 			<property name="framework"/>
+ 		</subclass>
+ 		
+ 		<subclass discriminator-value="p" name="inh.PythonProgrammer">
+ 		    <property name="ide"/>
+  		</subclass>
+
+	</class>
+	
+	
+</hibernate-mapping>

@@ -14,8 +14,11 @@
         <!-- 
         <mapping  resource="Job.hbm.xml"/>
         <mapping  resource="entities/publisher.hbm.xml"/>
-         -->
+         
         <mapping  resource="entities/college.hbm.xml"/>
+        -->
+        
+        <mapping  resource="inh/programmer.hbm.xml"/>
          
     </session-factory>
 </hibernate-configuration>
