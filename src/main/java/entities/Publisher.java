@@ -1,9 +1,23 @@
 package entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Publisher {
 	private int id;
 	private String name;
 	private Address address;
+	private Set<String> phones = new HashSet<String>();
+	
+	public Set<String> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(Set<String> phones) {
+		this.phones = phones;
+	}
+
+	
 
 	public Address getAddress() {
 		return address;

@@ -17,5 +17,11 @@
 			<property name="line2" length="30" />
 			<property name="city"  length="30"/>
 		</component>
+		
+		<set name="phones" table="HB_PUBLISHER_PHONES">
+		  <key column="pubid"/>
+ 		  <element length="10" column="mobile" not-null="true" type="string"/>
+ 		</set>
 	</class>
+	
 </hibernate-mapping>

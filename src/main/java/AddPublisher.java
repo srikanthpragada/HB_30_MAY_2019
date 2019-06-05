@@ -23,8 +23,10 @@ public class AddPublisher {
 		office.setLine1("Line1");
 		office.setLine2("Line2");
 		office.setCity("Vizag");
- 			
         p.setAddress(office);
+        
+        p.getPhones().add("3934933434");
+        p.getPhones().add("9585845855");
         
 		s.save(p);
 		s.getTransaction().commit();
