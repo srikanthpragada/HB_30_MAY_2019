@@ -1,26 +1,30 @@
-package inh;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class ListProgrammers {
+import entities.Student;
+
+public class ListStudentsEager {
+
 	public static void main(String[] args) throws Exception {
-       
+		
 		Configuration c = new Configuration();
 		c.configure();
 		
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
 		
-		List<Programmer> list = s.createQuery
-				("from JavaProgrammer").list();
+		List<Student> students = 
+				s.createQuery("from Student s join fetch s.course as c").list();
 		
-		for(Programmer p : list)
-			System.out.println(p);
-	
+		for(Student stud : students)
+			System.out.printf("%s  - %s\n", stud.getName(),
+					 stud.getCourse().getTitle()); 
+		
 		s.close();
+		
 		sf.close();
 	}
 }
